@@ -19,17 +19,6 @@ export const metadata: Metadata = {
   description: "Safegaurd your data on Web with Scramble",
 };
 
-//favicon and other meta tags
-
-export const head = (
-  <>
-    <link rel="icon" href="/favicon-v2.ico" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-  </>
-);
 
 export default function RootLayout({
   children,
@@ -40,7 +29,11 @@ export default function RootLayout({
     <html lang="en">
       <Head>
         <meta charSet="utf-8" />
-        {head}
+        <link rel="icon" href="/favicon-v2.ico" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        />
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
