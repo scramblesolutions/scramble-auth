@@ -27,15 +27,15 @@ const CallbackPage = () => {
 };
 
 const CallbackHandler = () => {
-    const { exchangeCodeForToken } = useOAuth();
+    const { exchangeCodeForToken, state } = useOAuth();
     const searchParams = useSearchParams();
 
     useEffect(() => {
         const code = searchParams.get('code');
-        if (code) {
+        if (code && state === 'idle') {
             exchangeCodeForToken(code);
         }
-    }, [searchParams, exchangeCodeForToken]);
+    }, [searchParams, exchangeCodeForToken, state]);
 
     return null;
 };

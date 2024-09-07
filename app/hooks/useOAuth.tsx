@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 const AUTH_SERVER_URL = process.env.NEXT_PUBLIC_AUTH_SERVER_URL;
 const tokenURL = `${AUTH_SERVER_URL}/token`;
 const userInfoURL = `${AUTH_SERVER_URL}/userinfo`;
-const redirect_uri = 'http://localhost:3000/callback';
+const redirect_uri = process.env.NEXT_PUBLIC_REDIRECT_URI;
 const clientID =process.env.NEXT_PUBLIC_CLIENT_ID;
 const clientSecret = process.env.NEXT_PUBLIC_CLIENT_SECRET;
 
