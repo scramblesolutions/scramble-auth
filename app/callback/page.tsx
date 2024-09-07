@@ -5,18 +5,8 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import useOAuth from '../hooks/useOAuth';
 
 const CallbackPage = () => {
-
-    const { exchangeCodeForToken, state, error } = useOAuth();
-    const searchParams = useSearchParams();
+    const { state, error } = useOAuth();
     const router = useRouter();
-
-    useEffect(() => {
-        const code = searchParams.get('code');
-        if (code) {
-            exchangeCodeForToken(code);
-        }
-    }, [searchParams, exchangeCodeForToken]);
-
 
     useEffect(() => {
         if (state === 'completed') {
@@ -26,6 +16,7 @@ const CallbackPage = () => {
 
     return (
         <Suspense fallback={<p>Loading...</p>}>
+            <CallbackHandler />
             <div>
                 {state === 'exchanging' && <p>Exchanging code for token...</p>}
                 {state === 'fetching_user_info' && <p>Fetching user info...</p>}
@@ -33,6 +24,20 @@ const CallbackPage = () => {
             </div>
         </Suspense>
     );
+};
+
+const CallbackHandler = () => {
+    const { exchangeCodeForToken } = useOAuth();
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const code = searchParams.get('code');
+        if (code) {
+            exchangeCodeForToken(code);
+        }
+    }, [searchParams, exchangeCodeForToken]);
+
+    return null;
 };
 
 export default CallbackPage;
