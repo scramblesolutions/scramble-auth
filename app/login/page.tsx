@@ -8,11 +8,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 import useOAuth from '../hooks/useOAuth';
 import { useRouter } from 'next/navigation';
 
-interface LoginProps {
-  data: string
-}
-
-const LoginPage: React.FC<LoginProps> = ({ }) => {
+const LoginPage = () => {
 
   const router = useRouter()
   const { state, error, userInfo, login } = useOAuth();
